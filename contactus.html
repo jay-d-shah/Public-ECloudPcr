@@ -29,15 +29,20 @@
     <![endif]-->
 
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+    <link rel="icon" href="assets/ico/favicon-16x16.png">
     
   </head>
 
   <body>
+  <div class="side-tab">
+        <img src="assets/img/shah/news-icon.png" alt="News Icon">
+        <div class="side-tab-txt">News</div>
+    </div>
+    <div class="news-tab">
+        <p>Coming Soon www.EMS1.com Press Release / Other News</p>
+        <p class="news-booth">Come visit us at EMS Today at Booth #2317</p>
+       
+    </div>
     <div class="top-bar">
         <div class="container">
               <div class="row">
@@ -68,7 +73,7 @@
           </button>
     	<div class="row">
         <div class="span2">
-        <a href="#" class="brand">e<b>CLOUD</b>pcr</a>
+        	<img src="assets/img/shah/ecloud_pcr.png" alt="eCLOUDpcr logo" class="ecloudpcr-logo">
         </div><!--/span2 -->
         <div class="span9 offset1 pull-right">
         	<div class="nav-collapse collapse">
@@ -98,53 +103,36 @@
                 <p class="lead">Use the form below to schedule an in-person demonstration.</p>
              </div><!--/span12-->
              <div class="span8">
-             <form class="quick-form">
+             <form class="quick-form" id="contact-form">
                 <fieldset>
                 <div class="row">
-                <div class="span4">
+                <div class="span8">
                     <div class="control-group">
                             <div class="controls">
-                                <input type="text" class="span4" placeholder="First Name"/>
+                                <input type="text" name="name" class="span8" id="contact-name" placeholder="Name"/>
                             </div>
                     </div><!--/control-group-->
                 </div>
-                 <div class="span4">
+                <div class="span8">
                     <div class="control-group">
                             <div class="controls">
-                                <input type="text" class="span4" placeholder="Last Name"/>
-                            </div>
-                    </div><!--/control-group-->
-                </div>
-                <div class="span4">
-                    <div class="control-group">
-                            <div class="controls">
-                                <input type="text" class="span4" placeholder="Email Address"/>
-                            </div>
-                    </div><!--/control-group-->
-                </div>
-                <div class="span4">
-                    <div class="control-group">
-                            <div class="controls">
-                                <input type="text" class="span4" placeholder="Contact number"/>
+                                <input type="text" name="email" class="span8" id="contact-email" placeholder="Email Address"/>
                             </div>
                     </div><!--/control-group-->
                 </div>
                 <div class="span8">
                 <div class="control-group">
                         <div class="controls">
-                            <input type="text" class="span8" placeholder="Subject"/>
-                        </div>
-                </div><!--/control-group-->
-                </div>
-                <div class="span8">
-                <div class="control-group">
-                        <div class="controls">
-                            <textarea rows="10" class="span8" placeholder="Comments"></textarea>                                
+                            <textarea rows="10" class="span8" name="message" id="contact-message" placeholder="Comments"></textarea>                                
                         </div>
                  </div><!--/control-group-->
                  </div>
                  <div class="span8">
+                 <input type="hidden" name="subject" value="eCloudpcr Contact Form">
+                 <input type="hidden" name="company_email" value="craig.campbell@shahpoint.com, jay.shah@shahpoint.com" >
                  <button type="submit" class="btn btn-primary btn-large btn-oval">Submit</button>
+                 <div class="message-success">Your message has been sent successfully</div>
+                 <div class="message-error">Your message was not delivered</div>
                  </div>
                  </div><!--/row-->
                  </fieldset>
@@ -168,8 +156,7 @@
         <div class="span8">
         	<p class="pull-right">
                 <a href="#termsModal" data-toggle="modal">Terms &amp; Conditions</a>
-                <a href="#privacyModal" data-toggle="modal">Privacy Policy</a>
-                <a href="contactus.html">Contact Us</a>
+                <a href="contactus.html" style="display:none;">Contact Us</a>
             </p>
         </div><!--/span3-->
         </div><!--/row-->

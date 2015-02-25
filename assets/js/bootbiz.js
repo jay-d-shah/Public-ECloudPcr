@@ -68,3 +68,108 @@ var place = new google.maps.LatLng(40.459760, -79.928076),//Change your Lat and 
 	  infowindow.open(map,marker);
 	});
 }
+
+//Contact form submission
+$("#contact-form").submit(function(){
+		var info = $(this).serialize();
+		var name = $('input[name=name]').val();
+		$('#submit').text('Sending...');
+		
+		
+		$.ajax({
+			url : 'http://www.brightthoughtdesign.com/access/sendemail.php', 
+			dataType:"text",
+			type: 'POST',
+			crossDomain:true,
+			data : info, 
+			success : function(result){ 
+				$('#submit').text('SUBMIT');
+				$('#contact-name').val('');
+				$('#contact-email').val('');
+				$('#contact-message').val('');
+				$('.message-success').fadeIn(300).delay(10000).fadeOut(300);
+			},
+			error : function(result){
+				$('.message-error').fadeIn(300).delay(10000).fadeOut(300);
+			}
+		});	
+		
+		return false;
+});
+
+//News Slide Out
+var minusDefault = '-40%',
+	positiveDefault = '40%',
+	side = 0, cal = '40%', windowWidth = $(window).width();
+	
+	if(windowWidth <= 650){
+		minusDefault = '-100%';
+		positiveDefault = '100%';
+		cal = '100%';
+		$('.news-tab').css('right', minusDefault);
+		$('.news-tab').append('<div class="exit-image"></div>');
+	}else{
+		minusDefault = '-40%',
+		positiveDefault = '40%',
+		side = 0, cal = '40%';
+	}
+	$(window).resize(function(e) {
+		windowWidth = $(window).width();
+		console.log(windowWidth);
+        if(windowWidth <= 650){
+			minusDefault = '-100%';
+			positiveDefault = '100%';
+			cal = '100%';
+			$('.news-tab').css('right', minusDefault);
+			$('.news-tab').append('<div class="exit-image"></div>');
+		}else{
+		minusDefault = '-40%',
+		positiveDefault = '40%',
+		side = 0, cal = '40%';
+		$('.exit-image').remove();
+		}
+    });
+	
+	$('body').delegate('.exit-image', 'click', function(){
+		$('.news-tab').animate({right: side},{
+				duration: 300,
+				step: function(){
+					$(this).removeClass('news-tab-shd');
+				}
+			});
+			$('.side-tab').animate({right : cal}, 300);
+			side = 0;
+			cal = positiveDefault;
+	});
+	$('.side-tab').click(function(){		
+		if(side == minusDefault && cal == 0){
+			$('.news-tab').animate({right: side},{
+				duration: 300,
+				step: function(){
+					$(this).removeClass('news-tab-shd');
+				}
+			});
+			$(this).animate({right : cal}, 300);
+			side = 0;
+			cal = positiveDefault;
+		}else{
+			$('.news-tab').animate({right: side}, 300);
+			$(this).animate({right : cal}, 300);
+			$('.news-tab').addClass('news-tab-shd');
+			side = minusDefault;
+			cal = 0;
+		}
+	});
+	$(window).scroll(function(){
+		if(side == minusDefault && cal == 0){
+			$('.news-tab').animate({right: side},{
+				duration: 300,
+				step: function(){
+					$(this).removeClass('news-tab-shd');
+				}
+			});
+			$('.side-tab').animate({right : cal}, 300);
+			side = 0;
+			cal = positiveDefault;
+		}
+	})
